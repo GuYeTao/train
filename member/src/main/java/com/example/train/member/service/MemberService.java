@@ -2,6 +2,8 @@ package com.example.train.member.service;
 
 
 import cn.hutool.core.collection.CollUtil;
+import com.example.train.common.exception.BusinessException;
+import com.example.train.common.exception.BusinessExceptionEnum;
 import com.example.train.member.domain.Member;
 import com.example.train.member.domain.MemberExample;
 import com.example.train.member.mapper.MemberMapper;
@@ -30,7 +32,7 @@ public class MemberService {
         if (CollUtil.isNotEmpty(memberList)){
 //            如果已注册有且仅有一个
 //            return memberList.get(0).getId();
-            throw new RuntimeException("手机号已注册");
+            throw new BusinessException(BusinessExceptionEnum.MEMBER_MOBILE_EXIST);
         }
 
         Member member = new Member();
