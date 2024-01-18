@@ -24,10 +24,12 @@ const routes = [{
   //   path: 'order',
   //   component: () => import('../views/main/order.vue'),
   // }]
-}, {
-  path: '',
-  redirect: '/welcome'
-}];
+}
+// , {
+//   path: '',
+//   redirect: '/welcome'
+// }
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
