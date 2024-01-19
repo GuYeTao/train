@@ -6,7 +6,7 @@
       </router-link>
     </div>
     <div style="float: right; color: white;">
-<!--      您好：{{member.mobile}} &nbsp;&nbsp;-->
+      您好：{{member.mobile}} &nbsp;&nbsp;
       <router-link to="/login" style="color: white;">
         退出登录
       </router-link>
@@ -38,13 +38,13 @@
 
 <script>
 import {defineComponent, ref, watch} from 'vue';
-// import store from "@/store";
+import store from "@/store";
 import router from '@/router'
 
 export default defineComponent({
   name: "the-header-view",
   setup() {
-    // let member = store.state.member;
+    let member = store.state.member;
     const selectedKeys = ref([]);
 
     watch(() => router.currentRoute.value.path, (newValue) => {
@@ -53,7 +53,7 @@ export default defineComponent({
       selectedKeys.value.push(newValue);
     }, {immediate: true});
     return {
-      // member,
+      member,
       selectedKeys
     };
   },
