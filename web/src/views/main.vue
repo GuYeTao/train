@@ -6,7 +6,7 @@
       <a-layout-content
           :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
       >
-        所有会员数：{{count}}
+<!--        所有会员数：{{count}}-->
         <router-view></router-view>
       </a-layout-content>
     </a-layout>

@@ -11,24 +11,25 @@ const routes = [{
   meta: {
     loginRequire: true
   },
-  // children: [{
-  //   path: 'welcome',
-  //   component: () => import('../views/main/welcome.vue'),
-  // }, {
-  //   path: 'passenger',
-  //   component: () => import('../views/main/passenger.vue'),
-  // }, {
-  //   path: 'ticket',
-  //   component: () => import('../views/main/ticket.vue'),
-  // }, {
+  children: [{
+    path: 'welcome',
+    component: () => import('../views/main/welcome.vue'),
+  }, {
+    path: 'passenger',
+    component: () => import('../views/main/passenger.vue'),
+  }, {
+    path: 'ticket',
+    component: () => import('../views/main/ticket.vue'),
+  // }
+  // , {
   //   path: 'order',
   //   component: () => import('../views/main/order.vue'),
-  // }]
+  }]
 }
-// , {
-//   path: '',
-//   redirect: '/welcome'
-// }
+, {
+  path: '',
+  redirect: '/welcome'
+}
 ];
 
 const router = createRouter({
