@@ -1,16 +1,19 @@
 package com.example.train.member.req;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 
 public class PassengerSaveReq {
     private Long id;
-
+    @NotNull(message = "id不能为空")
     private Long memberId;
-
+    @NotBlank(message = "名字不能为空")
     private String name;
-
+    @NotBlank(message = "身份证不能为空")
     private String idCard;
-
+    @NotBlank(message = "乘车人类型不能为空")
     private String type;
 
     private Date createTime;
