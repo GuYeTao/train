@@ -1,15 +1,20 @@
 <template>
-  <h1>购票管理</h1>
+  <h1>关于12306</h1>
 </template>
+
 <script>
-import { defineComponent } from 'vue';
+import {defineComponent} from "vue";
 
 export default defineComponent({
   setup() {
-    return {
+    return{
+
     };
-  },
+  }
 });
 </script>
+
+
 <style>
+
 </style>
