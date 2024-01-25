@@ -25,6 +25,11 @@
           <user-outlined /> &nbsp; 火车管理
         </router-link>
       </a-menu-item>
+      <a-menu-item key="/business/train-station">
+        <router-link to="/business/train-station">
+          <user-outlined /> &nbsp; 火车站点管理
+        </router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
