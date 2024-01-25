@@ -27,7 +27,12 @@
       </a-menu-item>
       <a-menu-item key="/business/train-station">
         <router-link to="/business/train-station">
-          <user-outlined /> &nbsp; 火车站点管理
+          <user-outlined /> &nbsp; 火车站点
+        </router-link>
+      </a-menu-item>
+      <a-menu-item key="/business/train-carriage">
+        <router-link to="/business/train-carriage">
+          <user-outlined /> &nbsp; 火车车厢
         </router-link>
       </a-menu-item>
     </a-menu>
