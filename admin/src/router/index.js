@@ -10,6 +10,9 @@ const routes = [{
   }, {
     path: 'about',
     component: () => import('../views/main/about.vue'),
+  }, {
+    path: 'business/station',
+    component: () => import('../views/main/business/station.vue'),
   }]
 }
 , {
