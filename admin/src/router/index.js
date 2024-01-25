@@ -22,6 +22,9 @@ const routes = [{
   }, {
     path: 'business/train-carriage',
     component: () => import('../views/main/business/train-carriage.vue'),
+  }, {
+    path: 'business/train-seat',
+    component: () => import('../views/main/business/train-seat.vue'),
   }]
 }
 , {
