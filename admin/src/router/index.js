@@ -13,6 +13,9 @@ const routes = [{
   }, {
     path: 'business/station',
     component: () => import('../views/main/business/station.vue'),
+  }, {
+    path: 'business/train',
+    component: () => import('../views/main/business/train.vue'),
   }]
 }
 , {

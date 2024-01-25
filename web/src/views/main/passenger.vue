@@ -111,7 +111,8 @@ export default defineComponent({
     };
 
     const onEdit = (record) => {
-      passenger.value = window.Tool.copy(record);
+      // passenger.value = window.Tool.copy(record);
+      passenger.value = record;
       visible.value = true;
     };
 
