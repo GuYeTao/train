@@ -132,8 +132,7 @@ export default defineComponent({
     };
 
     const onEdit = (record) => {
-      // trainCarriage.value = window.Tool.copy(record);
-      trainCarriage.value = record;
+      trainCarriage.value = window.Tool.copy(record);
       visible.value = true;
     };
 

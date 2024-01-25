@@ -150,8 +150,7 @@ export default defineComponent({
     };
 
     const onEdit = (record) => {
-      // train.value = window.Tool.copy(record);
-      train.value = record;
+      train.value = window.Tool.copy(record);
       visible.value = true;
     };
 

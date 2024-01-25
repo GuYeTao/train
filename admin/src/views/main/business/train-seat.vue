@@ -144,8 +144,7 @@ export default defineComponent({
     };
 
     const onEdit = (record) => {
-      // trainSeat.value = window.Tool.copy(record);
-      trainSeat.value = record;
+      trainSeat.value = window.Tool.copy(record);
       visible.value = true;
     };
 
