@@ -47,7 +47,7 @@ public class TrainStationService {
         trainStationExample.setOrderByClause("train_code asc, `index` asc");
         TrainStationExample.Criteria criteria = trainStationExample.createCriteria();
 
-        if(ObjectUtil.isNotNull(req.getTrainCode())){
+        if(ObjectUtil.isNotEmpty(req.getTrainCode())){
             criteria.andTrainCodeEqualTo(req.getTrainCode());
         }
 
