@@ -3,16 +3,16 @@ package com.example.train.business.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.example.train.common.resp.PageResp;
-import com.example.train.common.util.SnowUtil;
 import com.example.train.business.domain.TrainCarriage;
 import com.example.train.business.domain.TrainCarriageExample;
 import com.example.train.business.mapper.TrainCarriageMapper;
 import com.example.train.business.req.TrainCarriageQueryReq;
 import com.example.train.business.req.TrainCarriageSaveReq;
 import com.example.train.business.resp.TrainCarriageQueryResp;
+import com.example.train.common.resp.PageResp;
+import com.example.train.common.util.SnowUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,5 +70,13 @@ public class TrainCarriageService {
 
     public void delete(Long id) {
         trainCarriageMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<TrainCarriage> selectByTrainCode(String trainCode){
+        TrainCarriageExample trainCarriageExample = new TrainCarriageExample();
+        TrainCarriageExample.Criteria criteria = trainCarriageExample.createCriteria();
+        criteria.andTrainCodeEqualTo(trainCode);
+        List<TrainCarriage> list = trainCarriageMapper.selectByExample(trainCarriageExample);
+        return list;
     }
 }
