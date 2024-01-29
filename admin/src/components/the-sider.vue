@@ -69,11 +69,11 @@
             每日数据
           </span>
         </template>
-<!--        <a-menu-item key="/business/station">-->
-<!--          <router-link to="/business/station">-->
-<!--            <user-outlined /> &nbsp; 车站管理-->
-<!--          </router-link>-->
-<!--        </a-menu-item>-->
+        <a-menu-item key="/business/daily-train-station">
+          <router-link to="/business/daily-train-station">
+            <user-outlined /> &nbsp; 每日车站
+          </router-link>
+        </a-menu-item>
         <a-menu-item key="/business/daily-train">
           <router-link to="/business/daily-train">
             <user-outlined /> &nbsp; 每日车次
