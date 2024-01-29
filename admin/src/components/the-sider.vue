@@ -84,11 +84,11 @@
 <!--            <user-outlined /> &nbsp; 火车车站-->
 <!--          </router-link>-->
 <!--        </a-menu-item>-->
-<!--        <a-menu-item key="/business/train-carriage">-->
-<!--          <router-link to="/business/train-carriage">-->
-<!--            <user-outlined /> &nbsp; 火车车厢-->
-<!--          </router-link>-->
-<!--        </a-menu-item>-->
+        <a-menu-item key="/business/daily-train-carriage">
+          <router-link to="/business/daily-train-carriage">
+            <user-outlined /> &nbsp; 每日车厢
+          </router-link>
+        </a-menu-item>
 <!--        <a-menu-item key="/business/train-seat">-->
 <!--          <router-link to="/business/train-seat">-->
 <!--            <user-outlined /> &nbsp; 火车座位-->
