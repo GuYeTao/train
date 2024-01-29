@@ -2,7 +2,7 @@
   <a-layout-sider width="200" style="background: #fff">
     <a-menu
         v-model:selectedKeys="selectedKeys"
-        :openKeys="['batch', 'base']"
+        :openKeys="['batch', 'base', 'business']"
         mode="inline"
         :style="{ height: '100%', borderRight: 0 }"
     >
@@ -61,6 +61,39 @@
             <user-outlined /> &nbsp; 火车座位
           </router-link>
         </a-menu-item>
+      </a-sub-menu>
+      <a-sub-menu key="business">
+        <template #title>
+          <span>
+            <UnorderedListOutlined />
+            每日数据
+          </span>
+        </template>
+<!--        <a-menu-item key="/business/station">-->
+<!--          <router-link to="/business/station">-->
+<!--            <user-outlined /> &nbsp; 车站管理-->
+<!--          </router-link>-->
+<!--        </a-menu-item>-->
+        <a-menu-item key="/business/daily-train">
+          <router-link to="/business/daily-train">
+            <user-outlined /> &nbsp; 每日车次
+          </router-link>
+        </a-menu-item>
+<!--        <a-menu-item key="/business/train-station">-->
+<!--          <router-link to="/business/train-station">-->
+<!--            <user-outlined /> &nbsp; 火车车站-->
+<!--          </router-link>-->
+<!--        </a-menu-item>-->
+<!--        <a-menu-item key="/business/train-carriage">-->
+<!--          <router-link to="/business/train-carriage">-->
+<!--            <user-outlined /> &nbsp; 火车车厢-->
+<!--          </router-link>-->
+<!--        </a-menu-item>-->
+<!--        <a-menu-item key="/business/train-seat">-->
+<!--          <router-link to="/business/train-seat">-->
+<!--            <user-outlined /> &nbsp; 火车座位-->
+<!--          </router-link>-->
+<!--        </a-menu-item>-->
       </a-sub-menu>
     </a-menu>
   </a-layout-sider>
