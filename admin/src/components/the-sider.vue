@@ -69,6 +69,11 @@
             每日数据
           </span>
         </template>
+        <a-menu-item key="/business/confirm-order">
+          <router-link to="/business/confirm-order">
+            <user-outlined /> &nbsp; 订单信息
+          </router-link>
+        </a-menu-item>
         <a-menu-item key="/business/daily-train-ticket">
           <router-link to="/business/daily-train-ticket">
             <user-outlined /> &nbsp; 余票信息
