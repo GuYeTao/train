@@ -3,6 +3,7 @@ package com.example.train.business.service;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.EnumUtil;
+import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
@@ -141,12 +142,14 @@ public class ConfirmOrderService {
             }
             LOG.info("计算所有座位的相对偏移值：{}", offsetList);
             getSeat(date, trainCode, ticketReq0.getSeatTypeCode(),
-                    ticketReq0.getSeat().split("")[0], offsetList);
+                    ticketReq0.getSeat().split("")[0], offsetList,
+                    dailyTrainTicket.getStartIndex(), dailyTrainTicket.getEndIndex());
         } else {
             LOG.info("本次购票无选座");
             for (ConfirmOrderTicketReq ticketReq : tickets) {
                 getSeat(date, trainCode, ticketReq.getSeatTypeCode(),
-                        null, null);
+                        null, null,
+                        dailyTrainTicket.getStartIndex(), dailyTrainTicket.getEndIndex());
             }
         }
         // 一个车箱一个车箱的获取座位数据
@@ -162,7 +165,7 @@ public class ConfirmOrderService {
     }
 
     private void getSeat(Date date, String trainCode, String seatType,
-                         String column, List<Integer> offsetList){
+                         String column, List<Integer> offsetList, Integer startIndex, Integer endIndex){
         // 一个车箱一个车箱的获取座位数据
         List<DailyTrainCarriage> carriageList = dailyTrainCarriageService.selectBySeatType(date, trainCode, seatType);
         LOG.info("共查出{}个符合条件的车厢", carriageList.size());
@@ -170,6 +173,40 @@ public class ConfirmOrderService {
             LOG.info("开始从车厢{}选座", dailyTrainCarriage.getIndex());
             List<DailyTrainSeat> seatList = dailyTrainSeatService.selectByCarriage(date, trainCode, dailyTrainCarriage.getIndex());
             LOG.info("车厢{}，座位{}", dailyTrainCarriage.getIndex(), seatList.size());
+
+            for (DailyTrainSeat dailyTrainSeat : seatList) {
+                boolean isChoose = calSell(dailyTrainSeat, startIndex, endIndex);
+                if (isChoose) {
+                    LOG.info("选中座位");
+                    return;
+                } else {
+                    LOG.info("未选中座位");
+                }
+            }
+        }
+    }
+
+    private boolean calSell(DailyTrainSeat dailyTrainSeat, Integer startIndex, Integer endIndex){
+        String sell = dailyTrainSeat.getSell();
+        String sellPart = sell.substring(startIndex, endIndex);
+        if (Integer.parseInt(sellPart)>0){
+            LOG.info("座位{}在区间{}-{}已出售", dailyTrainSeat.getCarriageSeatIndex(), startIndex, endIndex);
+            return false;
+        } else {
+            LOG.info("座位{}在区间{}-{}未出售，可选", dailyTrainSeat.getCarriageSeatIndex(), startIndex, endIndex);
+            // 111
+            String curSell = sellPart.replace('0', '1');
+            //0111
+            curSell = StrUtil.fillBefore(curSell, '0', endIndex);
+            //01110
+            curSell = StrUtil.fillAfter(curSell, '0', sell.length());
+            //与已售信息按位或
+            int newSellInt = NumberUtil.binaryToInt(curSell) | NumberUtil.binaryToInt(sell);
+            String newSell = NumberUtil.getBinaryStr(newSellInt);
+            newSell = StrUtil.fillBefore(newSell, '0', sell.length());
+            LOG.info("最终售卖信息{}", newSell);
+            dailyTrainSeat.setSell(newSell);
+            return true;
         }
     }
 
