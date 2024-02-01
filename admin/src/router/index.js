@@ -52,14 +52,19 @@ const routes = [{
       component: () => import('../views/main/business/daily-train-ticket.vue'),
     }
     ]
-  }
-  , {
+  }, {
     path: 'batch/',
     children: [{
       path: 'job',
       component: () => import('../views/main/batch/job.vue')
     }]
-  }]
+  }, {
+      path: 'member/',
+      children: [{
+        path: 'ticket',
+        component: () => import('../views/main/member/ticket.vue')
+      }]
+    }]
 }, {
   path: '',
   redirect: '/welcome'
