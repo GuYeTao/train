@@ -12,7 +12,6 @@ public class TestController {
 
     @GetMapping("/hello")
     public String hello(){
-        System.out.println(businessFeign.hello());
-        return "hello11";
+        return businessFeign.hello()+"hello feign";
     }
 }
