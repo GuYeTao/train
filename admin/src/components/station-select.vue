@@ -37,14 +37,22 @@ export default defineComponent({
      * 查询所有的车站，用于车站下拉框
      */
     const queryAllStation = () => {
-      axios.get("/business/admin/station/query-all").then((response) => {
-        let data = response.data;
-        if (data.success) {
-          stations.value = data.content;
-        } else {
-          notification.error({description: data.message});
-        }
-      });
+      let list = SessionStorage.get(SESSION_ALL_STATION);
+      if (Tool.isNotEmpty(list)) {
+        console.log("queryAllStation 读取缓存");
+        stations.value = list;
+      } else {
+        axios.get("/business/admin/station/query-all").then((response) => {
+          let data = response.data;
+          if (data.success) {
+            stations.value = data.content;
+            console.log("queryAllStation 保存缓存");
+            SessionStorage.set(SESSION_ALL_STATION, stations.value);
+          } else {
+            notification.error({description: data.message});
+          }
+        });
+      }
     };
 
     /**
