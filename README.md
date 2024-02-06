@@ -20,3 +20,7 @@ Vue启动：
     
     admin
     web
+
+### sentinel启动命令
+
+    java -Dserver.port=18080 -Dcsp.sentinel.dashboard.server=localhost:18080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.8.6.jar
