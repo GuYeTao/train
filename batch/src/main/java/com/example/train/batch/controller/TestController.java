@@ -12,6 +12,7 @@ public class TestController {
 
     @GetMapping("/hello")
     public String hello(){
-        return businessFeign.hello()+"hello feign";
+        String businessHello = businessFeign.hello();
+        return "hello feign"+businessHello;
     }
 }
