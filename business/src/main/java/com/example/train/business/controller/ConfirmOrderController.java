@@ -3,6 +3,7 @@ package com.example.train.business.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.train.business.req.ConfirmOrderDoReq;
+import com.example.train.business.service.BeforeConfirmOrderService;
 import com.example.train.business.service.ConfirmOrderService;
 import com.example.train.common.exception.BusinessExceptionEnum;
 import com.example.train.common.resp.CommonResp;
@@ -27,6 +28,9 @@ public class ConfirmOrderController {
     @Resource
     private ConfirmOrderService confirmOrderService;
 
+    @Resource
+    private BeforeConfirmOrderService beforeConfirmOrderService;
+
     @Autowired
     private StringRedisTemplate redisTemplate;
 
@@ -49,7 +53,7 @@ public class ConfirmOrderController {
             redisTemplate.delete(imageCodeToken);
         }
 
-        confirmOrderService.doConfirm(req);
+        beforeConfirmOrderService.beforeDoConfirm(req);
         return new CommonResp<>();
     }
 
