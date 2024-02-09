@@ -101,7 +101,7 @@ public class TrainSeatService {
                     trainSeat.setId(SnowUtil.getSnowflakeNextId());
                     trainSeat.setTrainCode(trainCode);
                     trainSeat.setCarriageIndex(trainCarriage.getIndex());
-                    trainSeat.setRow(StrUtil.fillBefore(String.valueOf(row),'0',2));
+                    trainSeat.setRow(StrUtil.fillBefore(String.valueOf(row), '0', 2));
                     trainSeat.setCol(seatColEnum.getCode());
                     trainSeat.setSeatType(seatType);
                     trainSeat.setCarriageSeatIndex(seatIndex++);

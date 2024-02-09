@@ -6,6 +6,8 @@
     redis  -->  redis-server.exe
     nacos  -->  bin\startup.cmd
     seata  -->  bin\seata-server.bat
+    sentinel
+    RocketMQ
 
 ### 项目启动：
     

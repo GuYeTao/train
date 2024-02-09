@@ -15,7 +15,7 @@ import com.example.train.common.exception.BusinessException;
 import com.example.train.common.exception.BusinessExceptionEnum;
 import com.example.train.common.util.SnowUtil;
 import jakarta.annotation.Resource;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
+//import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -37,18 +37,12 @@ public class BeforeConfirmOrderService {
     @Autowired
     private SkTokenService skTokenService;
 
-
+    // @Resource
     // public RocketMQTemplate rocket
-    @Resource
-    public RocketMQTemplate rocketMQTemplate;
+    // public RocketMQTemplate rocketMQTemplate;
 
     @Resource
     private ConfirmOrderService confirmOrderService;
-
-
-
-    @Autowired
-    private StringRedisTemplate redisTemplate;
 
     @SentinelResource(value = "beforeDoConfirm", blockHandler = "beforeDoConfirmBlock")
     public Long beforeDoConfirm(ConfirmOrderDoReq req) {

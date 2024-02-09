@@ -37,7 +37,7 @@ public class AfterConfirmOrderService {
     @Resource
     private ConfirmOrderMapper confirmOrderMapper;
 
-    @Transactional
+//    @Transactional
 //    @GlobalTransactional
     public void afterDoConfirm(DailyTrainTicket dailyTrainTicket, List<DailyTrainSeat> finalSeatList, List<ConfirmOrderTicketReq> tickets, ConfirmOrder confirmOrder) throws Exception {
         // 选中座位后事务处理：
